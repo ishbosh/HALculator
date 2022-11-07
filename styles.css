@@ -1,0 +1,94 @@
+@font-face {
+    font-family: RobotoMono;
+    src: url(fonts/roboto-mono/RobotoMono-VariableFont_wght.ttf);
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+.container {
+    display: flex;
+}
+
+.outline {
+    border: 1px solid rgb(0, 255, 0);
+}
+
+.innerdisplay {
+    max-width: 380px;
+    min-height: 60px;
+    text-overflow: clip;
+    overflow: hidden;
+    white-space: nowrap;
+    direction: rtl;
+    margin-top: 9px;
+    margin-left: 6px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 10px 10px;
+}
+
+#calculator {
+    width: 450px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid rgb(0, 255, 0);
+    box-shadow: 0 0 40px 6px rgb(0, 175, 0);
+}
+
+#display {
+    width: 390px;
+    height: 75px;
+    align-self: center;
+    margin: 25px 15px 35px;
+    font-size: 45px;
+    color: rgb(0, 255, 0);
+    text-align: right;
+    font-family: RobotoMono, monospace;
+    background-color: rgb(31, 31, 31);
+}
+
+#numbers {
+    height: 365px;
+    width: 265px;
+    padding: 10px 10px 0 10px;
+    border: none;
+}
+
+#operators {
+    height: 365px;
+    width: 80px;
+    padding: 10px 10px 0 10px;
+    border: none;
+}
+
+button {
+    height: 60px;
+    width: 75px;
+    font-size: 30px;
+    margin: 5px;
+    border: 1px solid rgb(0, 255, 0);
+    background-color: black;
+    color:rgb(0, 255, 0);
+    transition: .25s;
+
+}
+
+button:hover {
+    background-color: rgb(31, 31, 31);
+    color:rgb(60, 255, 60);
+    transition: .15s;
+}
+
+button:active {
+    background-color: rgb(33, 39, 33);
+    color:rgb(160, 255, 160);
+}
