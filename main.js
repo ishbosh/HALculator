@@ -21,6 +21,9 @@ const display = document.querySelector('#innerdisplay');
 initializeDisplay();
 onButtonClick();
 
+// To format numbers to fit the display
+let formatter = Intl.NumberFormat('en', {maximumSignificantDigits: 8});
+
 //     // Listen for button presses so we can know when to change to operator/result/number
 
 //     // Select the inner display element
@@ -61,12 +64,17 @@ function updateDisplay(valueClicked) {
         const numbersA = valueObj.numbersA.join('');
         const numbersB = valueObj.numbersB.join('');
         valueObj.result = [operate(valueObj.operation, +numbersA, +numbersB)];
-        display.textContent = valueObj.result;
-
+        
         valueObj.numbersA = [valueObj.result];
         valueObj.numbersB = [];
+
+        // convert large numbers to fit the display
+        if (valueObj.result.toString().length > 11) {
+            valueObj.result = Number(formatter.format(valueObj.result[0]).replace(/,/g, '')).toExponential();
+           }
+        display.textContent = valueObj.result;
     }
-    else if (valueClicked.parentElement.id == 'operators' && valueObj.lastEntry != 'operator') {
+    else if (valueClicked.parentElement.id == 'operators' && valueObj.lastEntry != 'operator' && valueClicked.id != 'equals') {
         valueObj.lastEntry = 'operator'
         const operator = value; // example: '+'
         if (valueObj.numbersB.length > 0) {
@@ -76,22 +84,21 @@ function updateDisplay(valueClicked) {
             // clear out numbersB for next number entry and assign it to numbersA
             valueObj.numbersA = [valueObj.result];
             valueObj.numbersB = [];
-            // change display to show the result AND the operator
-            display.textContent = operator + ' ' + valueObj.result;
-        } else {
+            // conver large numbers to fit the display
+            if (valueObj.result.toString().length > 11) {
+                valueObj.result = Number(formatter.format(valueObj.result[0]).replace(/,/g, '')).toExponential();
+               }
+            display.textContent = valueObj.result + ' ' + operator;
+        } else if (operator != '=') {
             display.textContent = operator;
         }
         // store the last operation
-        if (valueClicked.id != 'equals') {
-            valueObj.operation = valueClicked.id // example: 'plus'
-        } else {
-            valueClicked.id = null;
-        }
+        valueObj.operation = valueClicked.id // example: 'plus'
+
     }
     if (valueObj.result == '0') {
         valueObj.numbersA = [];
     }
-   // if (valueObj.result.length)
 }
 
 function onButtonClick() {

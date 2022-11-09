@@ -54,7 +54,7 @@ button:active {
     text-overflow: clip;
     overflow: hidden;
     white-space: nowrap;
-    direction: rtl;
+    /* direction: rtl; */
     margin-top: 9px;
     margin-left: 6px;
 }
