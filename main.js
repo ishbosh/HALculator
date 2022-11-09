@@ -31,6 +31,69 @@ onButtonClick();
 //     // if equals is pressed, add the final operation to the display
 
 
+function initializeDisplay() {
+    display.textContent = '0';
+}
+
+function updateDisplay(valueClicked) {
+    // Grab the actual value of the clicked button from the html
+    const value = valueClicked.textContent;
+    const valueIsNumber = valueClicked.parentElement.id == 'numbers' && valueClicked.classList != 'symbol';
+
+    if (valueClicked.id == 'clear') {    
+        clearDisplay();
+    } 
+    else if (valueIsNumber == true && 
+        valueObj.numbersB.length < 13 &&
+        (valueObj.lastEntry == 'operator' || valueObj.numbersB.length > 0)) {
+        valueObj.lastEntry = 'number';
+        valueObj.numbersB.push(value);
+        display.textContent = valueObj.numbersB.join('');
+    }
+    else if (valueIsNumber == true && valueObj.numbersA.length < 13) {
+        valueObj.lastEntry = 'number';
+        valueObj.numbersA.push(value);
+        display.textContent = valueObj.numbersA.join('');
+    }
+    else if (valueClicked.id == 'equals' && valueObj.numbersB.length > 0) {
+        valueObj.lastEntry = 'result';
+
+        const numbersA = valueObj.numbersA.join('');
+        const numbersB = valueObj.numbersB.join('');
+        valueObj.result = [operate(valueObj.operation, +numbersA, +numbersB)];
+        display.textContent = valueObj.result;
+
+        valueObj.numbersA = [valueObj.result];
+        valueObj.numbersB = [];
+    }
+    else if (valueClicked.parentElement.id == 'operators' && valueObj.lastEntry != 'operator') {
+        valueObj.lastEntry = 'operator'
+        const operator = value; // example: '+'
+        if (valueObj.numbersB.length > 0) {
+            const numbersA = valueObj.numbersA.join('');
+            const numbersB = valueObj.numbersB.join('');
+            valueObj.result = [operate(valueObj.operation, +numbersA, +numbersB)];
+            // clear out numbersB for next number entry and assign it to numbersA
+            valueObj.numbersA = [valueObj.result];
+            valueObj.numbersB = [];
+            // change display to show the result AND the operator
+            display.textContent = operator + ' ' + valueObj.result;
+        } else {
+            display.textContent = operator;
+        }
+        // store the last operation
+        if (valueClicked.id != 'equals') {
+            valueObj.operation = valueClicked.id // example: 'plus'
+        } else {
+            valueClicked.id = null;
+        }
+    }
+    if (valueObj.result == '0') {
+        valueObj.numbersA = [];
+    }
+   // if (valueObj.result.length)
+}
+
 function onButtonClick() {
     const buttons = document.querySelectorAll('button');
     buttons.forEach((button) => {
