@@ -1,53 +1,54 @@
-const displayValue = {
-    numbers: [],
-    operator: null,
-    result: null,
+const valueObj = {
+    numbersA: [],
+    numbersB: [],
+    operation: null,
+    result: [null],
+    lastEntry: null,
 }
 
 function clearDisplay() {
-    displayValue.numbers = [];
-    displayValue.operator = null;
-    displayValue.result = null;
-    updateDisplay(); // may need to revisit this line once function is completed
+    valueObj.numbersA = [];
+    valueObj.numbersB = [];
+    valueObj.operation = null;
+    valueObj.result = [null];
+    valueObj.lastEntry = null;
+    hideHAL();
+    display.textContent = '0';
 }
 
-function updateDisplay() {
-    // Select the inner display element
-    // if number is pressed, add that number to the display
-    // if operator is pressed, add the operator to the end of the number
-    // if number is pressed after operator, show the new number and below that show the result
-    // if another operator is pressed, show the result of the last operation and showthe new operator
-    // if equals is pressed, add the final operation to the display
-    const display = document.querySelector('#innerdisplay');
+const display = document.querySelector('#innerdisplay');
 
-}
+initializeDisplay();
+onButtonClick();
 
-function updateDisplayValue() {
-    const button = getButtonPressed();
-    
-    if (button.id == 'clear') {    
-        clearDisplay();
-    } 
-    else if (button.parentElement.classList == 'numbers' && button.classList != 'symbol') {
-        displayValue.numbers.push(+button.textContent);
-    }
-}
+//     // Listen for button presses so we can know when to change to operator/result/number
 
-function getButtonPressed() {
+//     // Select the inner display element
+//     // if number is pressed, add that number to the display
+//     // if operator is pressed, add the operator to the end of the number
+//     // if number is pressed after operator, show the new number and below that show the result
+//     // if another operator is pressed, show the result of the last operation and showthe new operator
+//     // if equals is pressed, add the final operation to the display
+
+
+function onButtonClick() {
     const buttons = document.querySelectorAll('button');
     buttons.forEach((button) => {
         button.addEventListener('click', (e) => {
-            return e.target;
+            const valueClicked = e.target;
+            // update the display value with the value of the button clicked
+            updateDisplay(valueClicked);
+            // update the display with the newly changed display value
         }, false)
     })
 }
 
 function operate(operator, a, b) {
-    if (operator == 'add') {
+    if (operator == 'plus') {
         return add(a, b);
-    } else if (operator == 'subtract') {
+    } else if (operator == 'minus') {
         return subtract(a, b);
-    } else if (operator == 'multiply') {
+    } else if (operator == 'times') {
         return multiply(a, b);
     } else if (operator == 'divide') {
         return divide(a, b);
@@ -59,15 +60,15 @@ function operate(operator, a, b) {
 }
 
 function add(a, b) {
-	return a + b;
+	return parseFloat((a + b).toFixed(9));
 };
 
 function subtract(a, b) {
-	return a - b;
+	return parseFloat((a - b).toFixed(9));
 };
 
 function multiply(a, b) {
-	return a * b;
+	return parseFloat((a * b).toFixed(9));
 };
 
 function divide(a, b) {
@@ -75,19 +76,21 @@ function divide(a, b) {
         showHAL();
         return;
     }
-    return a / b;
+    return parseFloat((a / b).toFixed(9));
+
+    // return Math.round((a / b + Number.EPSILON) * 10000) / 10000;
 }
 
-function power(a, b) {
-	return a ** b;
-};
+// function power(a, b) {
+// 	return a ** b;
+// };
 
-function factorial(num) {
-    if (num === 0 || num === 1){
-        return 1;
-    }
-    return num * factorial(num - 1);
-};
+// function factorial(num) {
+//     if (num === 0 || num === 1){
+//         return 1;
+//     }
+//     return num * factorial(num - 1);
+// };
 
 
 // DIVIDE BY ZERO ERROR: //
