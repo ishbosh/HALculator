@@ -9,42 +9,40 @@
     <script src="main.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <div id="calculator" class="outline">
-            <div id="display" class="outline">
-                <div class="innerdisplay" contenteditable="true">
-                1234567891013
-                </div>
+    <div id="HAL" class="error hidden"><div id="outerHAL" class="error hidden"><div id="innerHAL" class="error hidden"></div></div></div>
+    <div id="calculator" class="container outline">
+        <div id="display" class="outline">
+            <span class="error hidden">I'm sorry, I'm afraid I can't do that.</span>
+            <div id="innerdisplay" contenteditable="true">
             </div>
-            <div class="button-container">
-                <div id="numbers" class="outline">
-                    <button type="submit">C</button>
-                    <button type="submit">( )</button>
-                    <button type="submit">%</button>
-                    <button type="submit">7</button>
-                    <button type="submit">8</button>
-                    <button type="submit">9</button>
-                    <button type="submit">4</button>
-                    <button type="submit">5</button>
-                    <button type="submit">6</button>
-                    <button type="submit">1</button>
-                    <button type="submit">2</button>
-                    <button type="submit">3</button>
-                    <button type="submit">&PlusMinus;</button>
-                    <button type="submit">0</button>
-                    <button type="submit">.</button>
-                    
-                </div>
-                <div id="operators" class="outline">
-                    <button type="submit">&divide;</button>
-                    <button type="submit">&times;</button>
-                    <button type="submit">&minus;</button>
-                    <button type="submit">&plus;</button>
-                    <button type="submit">&equals;</button>
-                </div>
+        </div>
+        <div class="button-container">
+            <div id="numbers" class="outline">
+                <button id="clear">C</button>
+                <button class="symbol">( )</button>
+                <button class="symbol">%</button>
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button class="symbol">&PlusMinus;</button>
+                <button>0</button>
+                <button class="symbol">.</button>
+                
+            </div>
+            <div id="operators" class="outline">
+                <button >&divide;</button>
+                <button >&times;</button>
+                <button >&minus;</button>
+                <button >&plus;</button>
+                <button >&equals;</button>
             </div>
         </div>
     </div>
-    
 </body>
 </html>

@@ -9,16 +9,46 @@ body {
     align-items: center;
     justify-content: center;
     background-color: black;
+    flex-direction: column;
 }
-.container {
+
+button {
+    height: 60px;
+    width: 75px;
+    font-size: 30px;
+    margin: 5px;
+    border: 1px solid rgb(0, 255, 0);
+    background-color: black;
+    color:rgb(0, 255, 0);
+    transition: .25s;
+
+}
+
+button:hover {
+    background-color: rgb(31, 31, 31);
+    color:rgb(60, 255, 60);
+    transition: .25s;
+    box-shadow: 0 0 8px 4px rgb(0, 175, 0);
+}
+
+button:active {
+    background-color: rgb(33, 39, 33);
+    color:rgb(160, 255, 160);
+    box-shadow: 0 0 12px 6px rgb(0, 255, 0);
+    transition: .25s;
+}
+
+.button-container {
     display: flex;
+    justify-content: space-around;
+    margin: 20px 10px 10px;
 }
 
 .outline {
     border: 1px solid rgb(0, 255, 0);
 }
 
-.innerdisplay {
+#innerdisplay {
     max-width: 380px;
     min-height: 60px;
     text-overflow: clip;
@@ -29,18 +59,13 @@ body {
     margin-left: 6px;
 }
 
-.button-container {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 10px 10px;
-}
 
 #calculator {
     width: 450px;
     height: 550px;
     display: flex;
     flex-direction: column;
-    border: 3px solid rgb(0, 255, 0);
+    border: 4px solid rgb(0, 255, 0);
     box-shadow: 0 0 40px 6px rgb(0, 175, 0);
 }
 
@@ -70,25 +95,43 @@ body {
     border: none;
 }
 
-button {
-    height: 60px;
-    width: 75px;
-    font-size: 30px;
-    margin: 5px;
-    border: 1px solid rgb(0, 255, 0);
-    background-color: black;
-    color:rgb(0, 255, 0);
-    transition: .25s;
 
+/* ??? ERROR DIVIDE BY ZERO ??? */
+
+#HAL {
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    border: 4px solid rgb(117, 117, 117);
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -100px;
 }
 
-button:hover {
-    background-color: rgb(31, 31, 31);
-    color:rgb(60, 255, 60);
-    transition: .15s;
+#outerHAL {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 2px solid rgb(255, 0, 0);
+    box-shadow: 0 0 30px 20px red;
 }
 
-button:active {
-    background-color: rgb(33, 39, 33);
-    color:rgb(160, 255, 160);
+#innerHAL {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 20px 10px red;
+}
+
+div span.error {
+    font-size: 16px;
+    color: red;
+    white-space: normal;
+    transition: 2s;
+}
+
+.hidden {
+    display: none;
 }
