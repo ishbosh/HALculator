@@ -180,10 +180,10 @@ function showHAL() {
 
     buttons.forEach((button) => {
         button.style.transition ='color 2s';
-        if (button.id != 'clear'){
+        if (button.id != 'clear' && button.classList != 'symbol disabled'){
             button.style.color = 'rgb(255, 0, 0)';
             button.removeEventListener('click', buttonHandler);
-        } else {
+        } else if (button.id == 'clear') {
             button.style.boxShadow = '0 0 8px 4px rgb(0, 175, 0)';
         }
 
@@ -200,10 +200,12 @@ function hideHAL() {
     const calc = document.querySelector('#calculator');
     calc.style.boxShadow = '0 0 40px 6px rgb(0, 175, 0)';
     buttons.forEach((button) => {
-        button.style.transition = 'all .25s';
-        button.style.color = 'rgb(0, 255, 0)';
-        if (button.id == 'clear') {
-            button.style.boxShadow = '';
+        if (button.classList != 'symbol disabled') {
+            button.style.transition = 'all .25s';
+            button.style.color = 'rgb(0, 255, 0)';
+            if (button.id == 'clear') {
+                button.style.boxShadow = '';
+            }
         }
     })
 }
