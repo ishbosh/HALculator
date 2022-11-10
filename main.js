@@ -145,6 +145,7 @@ function divide(a, b) {
     if (b == 0) {
         valueObj.error = true;
         showHAL();
+        console.log("I think you know what the problem is just as well as I do.")
         return;
     }
     return parseFloat((a / b).toFixed(9));
@@ -200,7 +201,7 @@ function hideHAL() {
         button.style.transition = 'all .25s';
         button.style.color = 'rgb(0, 255, 0)';
         if (button.id == 'clear') {
-            button.style.removeProperty('boxShadow');
+            button.style.boxShadow = '';
         }
     })
 }
