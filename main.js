@@ -14,6 +14,7 @@ function clearDisplay() {
     valueObj.result = [null];
     valueObj.lastEntry = null;
     if (valueObj.error == true) {
+        valueObj.error = false;
         hideHAL();
         onButtonClick();
     }
@@ -92,6 +93,10 @@ function updateDisplay(valueClicked) {
     }
     if (valueObj.result == '0') {
         valueObj.numbersA = [];
+    }
+
+    if (valueObj.error == true) {
+        display.textContent = '';
     }
 }
 
@@ -175,6 +180,8 @@ function showHAL() {
         if (button.id != 'clear'){
             button.style.color = 'rgb(255, 0, 0)';
             button.removeEventListener('click', buttonHandler);
+        } else {
+            button.style.boxShadow = '0 0 8px 4px rgb(0, 175, 0)';
         }
 
     })
@@ -192,5 +199,8 @@ function hideHAL() {
     buttons.forEach((button) => {
         button.style.transition = 'all .25s';
         button.style.color = 'rgb(0, 255, 0)';
+        if (button.id == 'clear') {
+            button.style.removeProperty('boxShadow');
+        }
     })
 }
