@@ -102,7 +102,9 @@ function updateDisplay(valueClicked) {
 
 function onButtonClick() {
     buttons.forEach((button) => {
-        button.addEventListener('click', buttonHandler, false)
+        if (button.classList != 'symbol disabled') {
+            button.addEventListener('click', buttonHandler, false)
+        }
     })
 }
 

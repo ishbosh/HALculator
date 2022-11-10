@@ -150,3 +150,20 @@ div span.error {
 #HAL.hidden {
     opacity: 0%;
 }
+
+/* Disabled buttons */
+
+button.disabled {
+    color: gray;
+    border-color: gray;
+}
+button.disabled:hover {
+    box-shadow: none;
+    color: gray;
+    background-color: black;
+}
+button.disabled:active {
+    box-shadow: none;
+    color: gray;
+    background-color: black;
+}
