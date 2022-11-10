@@ -21,7 +21,6 @@ button {
     background-color: black;
     color:rgb(0, 255, 0);
     transition: .25s;
-
 }
 
 button:hover {
@@ -54,7 +53,6 @@ button:active {
     text-overflow: clip;
     overflow: hidden;
     white-space: nowrap;
-    /* direction: rtl; */
     margin-top: 9px;
     margin-left: 6px;
 }
@@ -79,6 +77,7 @@ button:active {
     text-align: right;
     font-family: RobotoMono, monospace;
     background-color: rgb(31, 31, 31);
+    position: relative;
 }
 
 #numbers {
@@ -108,6 +107,8 @@ button:active {
     justify-content: center;
     align-items: center;
     margin-top: -100px;
+    transition: opacity 2.5s;
+    opacity: 1;
 }
 
 #outerHAL {
@@ -116,6 +117,8 @@ button:active {
     border-radius: 50%;
     border: 2px solid rgb(255, 0, 0);
     box-shadow: 0 0 30px 20px red;
+    transition: opacity 2.5s;
+    opacity: 1;
 }
 
 #innerHAL {
@@ -123,15 +126,27 @@ button:active {
     width: 20px;
     border-radius: 50%;
     box-shadow: inset 0 0 20px 10px red;
+    transition: opacity 2.5s;
+    opacity: 1;
 }
 
 div span.error {
+    max-height: 60px;
+    width: 370px;
     font-size: 16px;
     color: red;
     white-space: normal;
-    transition: 2s;
+    transition: opacity 2.5s;
+    opacity: 1;
+    position: absolute;
+    left: 7px;
+    top: 27px;
 }
 
-.hidden {
-    display: none;
+.error.hidden {
+    opacity: 0%;
+}
+
+#HAL.hidden {
+    opacity: 0%;
 }
