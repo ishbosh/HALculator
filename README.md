@@ -1,4 +1,4 @@
-# calculator
+# HALculator
 A basic calculator to complete project assignment by The Odin Project.
 
 The goal of this project is to use what I have learned about HTML, CSS,
