@@ -1,5 +1,6 @@
 # HALculator
 A basic calculator to complete project assignment by The Odin Project.
+Divide by zero, if you dare.
 
 The goal of this project is to use what I have learned about HTML, CSS,
 and JavaScript to create an on screen calculator. The main functions of
